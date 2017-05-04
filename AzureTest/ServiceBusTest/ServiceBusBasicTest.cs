@@ -1,5 +1,4 @@
-﻿// <copyright file="ServiceBusBasicTest.cs" company="Microsoft">Copyright (c) Microsoft. All rights reserved.</copyright>
-namespace AzureTest.ServiceBusTest
+﻿namespace AzureTest.ServiceBusTest
 {
     using System;
     using System.Collections.Generic;
@@ -13,8 +12,6 @@ namespace AzureTest.ServiceBusTest
         [TestMethod]
         public void BasicServiceBusTest()
         {
-
         }
-
     }
 }
