@@ -12,12 +12,12 @@ namespace AzureTest.ServiceBusTest
 {
     public static class Relayutils
     {
-        public static void SetupRelayServer()
+        public static async Task<string> SetupRelayServer()
         {
-            string serviceBusNamespace = ConfigurationManager.AppSettings[""];
-            string listenerPolicyName = "";
-            string listenerPolicyKey = "";
-            string serviceRelativePath = "";
+            string serviceBusNamespace = ConfigurationManager.AppSettings["ServiceBusNamespace"];
+            string listenerPolicyName = ConfigurationManager.AppSettings["ReceiverPolicyName"];
+            string listenerPolicyKey = ConfigurationManager.AppSettings["ReceiverPolicyKey"];
+            string serviceRelativePath = "Relay";
             ServiceHost host = new ServiceHost(typeof(RelayService));
             host.AddServiceEndpoint(typeof(IRelayService), new NetTcpRelayBinding(), ServiceBusEnvironment.CreateServiceUri("sb", serviceBusNamespace, serviceRelativePath)).Behaviors.Add(new TransportClientEndpointBehavior
             {
@@ -25,35 +25,36 @@ namespace AzureTest.ServiceBusTest
             });
 
             host.Open();
-            Console.WriteLine("Service is running.Press ENTER to stop the service.");
-            Console.ReadLine();
+            while (RelayService.MessageReceived == false)
+            {
+                await Task.Delay(100).ConfigureAwait(false);
+            }
+
             host.Close();
+            return RelayService.Message;
         }
 
-        public static void SetupRelayClient()
+        public static string SetupRelayClient(string message)
         {
-            string serviceBusNamespace = "";
-            string listenerPolicyName = "";
-            string listenerPolicyKey = "";
-            string serviceRelativePath = "";
+            string serviceBusNamespace = ConfigurationManager.AppSettings["ServiceBusNamespace"];
+            string listenerPolicyName = ConfigurationManager.AppSettings["SenderPolicyName"];
+            string listenerPolicyKey = ConfigurationManager.AppSettings["SenderPolicyKey"];
+            string serviceRelativePath = "Relay";
             var client = new ChannelFactory<IRelayServiceChannel>(
             new NetTcpRelayBinding(),
             new EndpointAddress(
-            ServiceBusEnvironment.CreateServiceUri("sb",
-            serviceBusNamespace, serviceRelativePath)));
+            ServiceBusEnvironment.CreateServiceUri("sb", serviceBusNamespace, serviceRelativePath)));
             client.Endpoint.Behaviors.Add(
             new TransportClientEndpointBehavior
             {
-                TokenProvider =
-            TokenProvider.CreateSharedAccessSignatureTokenProvider(listenerPolicyName,
-            listenerPolicyKey)
+                TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider(listenerPolicyName, listenerPolicyKey)
             });
             using (var channel = client.CreateChannel())
             {
-                string message = channel.EchoMessage("hello from the relay!");
-                Console.WriteLine(message);
+                string messageReturned = channel.EchoMessage(message);
+                Console.WriteLine(messageReturned);
+                return messageReturned;
             }
-            Console.ReadLine();
         }
     }
 }
