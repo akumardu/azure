@@ -19,7 +19,7 @@ namespace AzureTest.ServiceBusTest
             string listenerPolicyKey = "";
             string serviceRelativePath = "";
             ServiceHost host = new ServiceHost(typeof(RelayService));
-            host.AddServiceEndpoint(typeof(IRelayService), new NetTcpBinding(), ServiceBusEnvironment.CreateServiceUri("sb", serviceBusNamespace, serviceRelativePath)).Behaviors.Add(new TransportClientEndpointBehavior
+            host.AddServiceEndpoint(typeof(IRelayService), new NetTcpRelayBinding(), ServiceBusEnvironment.CreateServiceUri("sb", serviceBusNamespace, serviceRelativePath)).Behaviors.Add(new TransportClientEndpointBehavior
             {
                 TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider(listenerPolicyName, listenerPolicyKey)
             });
@@ -37,9 +37,9 @@ namespace AzureTest.ServiceBusTest
             string listenerPolicyKey = "";
             string serviceRelativePath = "";
             var client = new ChannelFactory<IRelayServiceChannel>(
-            new NetTcpBinding(),
+            new NetTcpRelayBinding(),
             new EndpointAddress(
-            ServiceBusEnvironment.CreateServiceUri(“sb”,
+            ServiceBusEnvironment.CreateServiceUri("sb",
             serviceBusNamespace, serviceRelativePath)));
             client.Endpoint.Behaviors.Add(
             new TransportClientEndpointBehavior
