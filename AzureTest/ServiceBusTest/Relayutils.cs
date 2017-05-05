@@ -5,6 +5,8 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.ServiceBus;
+using Microsoft.Rest;
 
 namespace AzureTest.ServiceBusTest
 {
@@ -17,7 +19,7 @@ namespace AzureTest.ServiceBusTest
             string listenerPolicyKey = "";
             string serviceRelativePath = "";
             ServiceHost host = new ServiceHost(typeof(RelayService));
-            host.AddServiceEndpoint(typeof(IRelayService), new NetTcpRelayBinding(), ServiceBusEnvironment.CreateServiceUri("sb", serviceBusNamespace, serviceRelativePath)).Behaviors.Add(new TransportClientEndpointBehavior
+            host.AddServiceEndpoint(typeof(IRelayService), new NetTcpBinding(), ServiceBusEnvironment.CreateServiceUri("sb", serviceBusNamespace, serviceRelativePath)).Behaviors.Add(new TransportClientEndpointBehavior
             {
                 TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider(listenerPolicyName, listenerPolicyKey)
             });
@@ -34,8 +36,8 @@ namespace AzureTest.ServiceBusTest
             string listenerPolicyName = "";
             string listenerPolicyKey = "";
             string serviceRelativePath = "";
-            var client = new ChannelFactory<IrelayServiceChannel>(
-            new NetTcpRelayBinding(),
+            var client = new ChannelFactory<IRelayServiceChannel>(
+            new NetTcpBinding(),
             new EndpointAddress(
             ServiceBusEnvironment.CreateServiceUri(“sb”,
             serviceBusNamespace, serviceRelativePath)));

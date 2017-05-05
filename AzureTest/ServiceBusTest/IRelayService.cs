@@ -8,9 +8,11 @@ using System.Threading.Tasks;
 namespace AzureTest.ServiceBusTest
 {
     [ServiceContract]
-    interface IRelayService
+    public interface IRelayService
     {
         [OperationContract]
         string EchoMessage(string message);
     }
+
+    public interface IRelayServiceChannel : IRelayService, IClientChannel { }
 }
