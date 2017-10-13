@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace VotingWeb
+namespace VotingData
 {
     internal static class Program
     {
@@ -20,10 +20,10 @@ namespace VotingWeb
                 // When Service Fabric creates an instance of this service type,
                 // an instance of the class is created in this host process.
 
-                ServiceRuntime.RegisterServiceAsync("VotingWebType",
-                    context => new VotingWeb(context)).GetAwaiter().GetResult();
+                ServiceRuntime.RegisterServiceAsync("VotingDataType",
+                    context => new VotingData(context)).GetAwaiter().GetResult();
 
-                ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(VotingWeb).Name);
+                ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(VotingData).Name);
 
                 // Prevents this host process from terminating so services keeps running. 
                 Thread.Sleep(Timeout.Infinite);
