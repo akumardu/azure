@@ -16,6 +16,7 @@ namespace VotingData.Controllers
         {
             this.stateManager = stateManager;
         }
+
         // GET api/VoteData
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -35,6 +36,7 @@ namespace VotingData.Controllers
                 return Json(result);
             }
         }
+
         // PUT api/VoteData/name
         [HttpPut("{name}")]
         public async Task<IActionResult> Put(string name)
@@ -48,6 +50,7 @@ namespace VotingData.Controllers
             }
             return new OkResult();
         }
+
         // DELETE api/VoteData/name
         [HttpDelete("{name}")]
         public async Task<IActionResult> Delete(string name)
