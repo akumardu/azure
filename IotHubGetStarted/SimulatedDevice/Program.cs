@@ -11,14 +11,15 @@ namespace SimulatedDevice
     class Program
     {
         static DeviceClient deviceClient;
-        static string iotHubUri = "testhubamar.azure-devices.net";
-        static string deviceKey = "lZY+sSmfnbmlXe7HPCRRjd85sR4uZFRmo1DsV/ojbkk=";
+        static string iotHubUri = "testamar.azure-devices.net";
+        static string deviceKey = "kN0U0PdAGcX+rdUJQUo9VTJPWfF/u6u298nfKjQTJcs=";
 
         static void Main(string[] args)
         {
             Console.WriteLine("Simulated device\n");
             deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("myFirstDevice", deviceKey), TransportType.Mqtt);
 
+            deviceClient.ProductInfo = "HappyPath_Simulated-CSharp";
             SendDeviceToCloudMessagesAsync();
             Console.ReadLine();
         }
