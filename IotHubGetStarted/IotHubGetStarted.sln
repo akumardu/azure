@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulatedDevice", "Simulate
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadTestQueue", "ReadTestQueue\ReadTestQueue.csproj", "{325343E7-3C7B-4B7F-84C6-8B085A88A577}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendCloudToDevice", "SendCloudToDevice\SendCloudToDevice.csproj", "{B4320C0B-9984-4427-B0C5-46CACBDAFBEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadFileUploadNotifications", "ReadFileUploadNotifications\ReadFileUploadNotifications.csproj", "{B0B0C1E2-5D36-4044-96DB-44F5E961ABAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{325343E7-3C7B-4B7F-84C6-8B085A88A577}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{325343E7-3C7B-4B7F-84C6-8B085A88A577}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{325343E7-3C7B-4B7F-84C6-8B085A88A577}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4320C0B-9984-4427-B0C5-46CACBDAFBEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4320C0B-9984-4427-B0C5-46CACBDAFBEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4320C0B-9984-4427-B0C5-46CACBDAFBEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4320C0B-9984-4427-B0C5-46CACBDAFBEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0B0C1E2-5D36-4044-96DB-44F5E961ABAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0B0C1E2-5D36-4044-96DB-44F5E961ABAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0B0C1E2-5D36-4044-96DB-44F5E961ABAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0B0C1E2-5D36-4044-96DB-44F5E961ABAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

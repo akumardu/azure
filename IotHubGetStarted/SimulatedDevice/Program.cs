@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Azure.Devices.Client;
+using Newtonsoft.Json;
+using System;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Devices.Client;
-using Newtonsoft.Json;
 
 namespace SimulatedDevice
 {
@@ -20,8 +19,42 @@ namespace SimulatedDevice
             deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("myFirstDevice", deviceKey), TransportType.Mqtt);
 
             deviceClient.ProductInfo = "HappyPath_Simulated-CSharp";
+
             SendDeviceToCloudMessagesRoutingTutorialAsync();
+            ReceiveC2dAsync();
+            SendToBlobAsync();
             Console.ReadLine();
+        }
+
+        private static async void SendToBlobAsync()
+        {
+            string fileName = "Sketch.png";
+            Console.WriteLine("Uploading file: {0}", fileName);
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            using (var sourceData = new FileStream(@"Sketch.png", FileMode.Open))
+            {
+                await deviceClient.UploadToBlobAsync(fileName, sourceData);
+            }
+
+            watch.Stop();
+            Console.WriteLine("Time to upload file: {0}ms\n", watch.ElapsedMilliseconds);
+        }
+
+        private static async void ReceiveC2dAsync()
+        {
+            Console.WriteLine("\nReceiving cloud to device messages from service");
+            while (true)
+            {
+                Message receivedMessage = await deviceClient.ReceiveAsync();
+                if (receivedMessage == null) continue;
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Received message: {0}", Encoding.ASCII.GetString(receivedMessage.GetBytes()));
+                Console.ResetColor();
+
+                await deviceClient.CompleteAsync(receivedMessage);
+            }
         }
 
         private static async void SendDeviceToCloudMessagesRoutingTutorialAsync()
