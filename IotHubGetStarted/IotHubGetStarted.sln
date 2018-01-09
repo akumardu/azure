@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddTagsAndQuery", "AddTagsA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportConnectivity", "ReportConnectivity\ReportConnectivity.csproj", "{903EDE7B-ECE8-4B97-B0DC-897F84295BFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallMethodOnDevice", "CallMethodOnDevice\CallMethodOnDevice.csproj", "{986EED4A-9928-4A8A-8507-5CA24BD3EBD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{903EDE7B-ECE8-4B97-B0DC-897F84295BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{903EDE7B-ECE8-4B97-B0DC-897F84295BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{903EDE7B-ECE8-4B97-B0DC-897F84295BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{986EED4A-9928-4A8A-8507-5CA24BD3EBD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{986EED4A-9928-4A8A-8507-5CA24BD3EBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{986EED4A-9928-4A8A-8507-5CA24BD3EBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{986EED4A-9928-4A8A-8507-5CA24BD3EBD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

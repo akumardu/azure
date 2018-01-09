@@ -22,7 +22,17 @@ namespace SimulatedDevice
 
             SendDeviceToCloudMessagesRoutingTutorialAsync();
             ReceiveC2dAsync();
-            SendToBlobAsync();
+            //SendToBlobAsync();
+
+            // setup callback for "writeLine" method
+            deviceClient.SetMethodHandlerAsync("writeLine", WriteLineToConsole, null).Wait();
+            Console.WriteLine("Waiting for direct method call\n Press enter to exit.");
+            Console.ReadLine();
+
+            Console.WriteLine("Exiting...");
+
+            // as a good practice, remove the "writeLine" handler
+            deviceClient.SetMethodHandlerAsync("writeLine", null, null).Wait();
             Console.ReadLine();
         }
 
