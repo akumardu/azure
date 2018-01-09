@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportConnectivity", "Repor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallMethodOnDevice", "CallMethodOnDevice\CallMethodOnDevice.csproj", "{986EED4A-9928-4A8A-8507-5CA24BD3EBD8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulateDeviceConfiguration", "SimulateDeviceConfiguration\SimulateDeviceConfiguration.csproj", "{FD0792FC-B64E-429B-9B89-DCB01373229F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetDesiredConfigurationAndQuery", "SetDesiredConfigurationAndQuery\SetDesiredConfigurationAndQuery.csproj", "{A6741098-0F8F-499C-B546-36147E215300}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{986EED4A-9928-4A8A-8507-5CA24BD3EBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{986EED4A-9928-4A8A-8507-5CA24BD3EBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{986EED4A-9928-4A8A-8507-5CA24BD3EBD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD0792FC-B64E-429B-9B89-DCB01373229F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD0792FC-B64E-429B-9B89-DCB01373229F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD0792FC-B64E-429B-9B89-DCB01373229F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD0792FC-B64E-429B-9B89-DCB01373229F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6741098-0F8F-499C-B546-36147E215300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6741098-0F8F-499C-B546-36147E215300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6741098-0F8F-499C-B546-36147E215300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6741098-0F8F-499C-B546-36147E215300}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
