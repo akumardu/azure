@@ -26,6 +26,16 @@ namespace SimulatedDevice
             Console.ReadLine();
         }
 
+        static Task<MethodResponse> WriteLineToConsole(MethodRequest methodRequest, object userContext)
+        {
+            Console.WriteLine();
+            Console.WriteLine("\t{0}", methodRequest.DataAsJson);
+            Console.WriteLine("\nReturning response for method {0}", methodRequest.Name);
+
+            string result = "'Input was written to log.'";
+            return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
+        }
+
         private static async void SendToBlobAsync()
         {
             string fileName = "Sketch.png";

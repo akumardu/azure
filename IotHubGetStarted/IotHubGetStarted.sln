@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendCloudToDevice", "SendCl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadFileUploadNotifications", "ReadFileUploadNotifications\ReadFileUploadNotifications.csproj", "{B0B0C1E2-5D36-4044-96DB-44F5E961ABAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddTagsAndQuery", "AddTagsAndQuery\AddTagsAndQuery.csproj", "{AB3B717C-3044-458A-93FF-6DE854C90ADA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportConnectivity", "ReportConnectivity\ReportConnectivity.csproj", "{903EDE7B-ECE8-4B97-B0DC-897F84295BFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{B0B0C1E2-5D36-4044-96DB-44F5E961ABAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0B0C1E2-5D36-4044-96DB-44F5E961ABAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0B0C1E2-5D36-4044-96DB-44F5E961ABAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB3B717C-3044-458A-93FF-6DE854C90ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB3B717C-3044-458A-93FF-6DE854C90ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB3B717C-3044-458A-93FF-6DE854C90ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB3B717C-3044-458A-93FF-6DE854C90ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{903EDE7B-ECE8-4B97-B0DC-897F84295BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{903EDE7B-ECE8-4B97-B0DC-897F84295BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{903EDE7B-ECE8-4B97-B0DC-897F84295BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{903EDE7B-ECE8-4B97-B0DC-897F84295BFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
