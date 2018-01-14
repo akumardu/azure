@@ -51,6 +51,7 @@ namespace Alphabet.Web
         private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
         {
             String output = null;
+            string primaryReplicaAddress = "";
             try
             {
                 string lastname = context.Request.QueryString["lastname"];
@@ -59,7 +60,7 @@ namespace Alphabet.Web
                 ResolvedServicePartition partition = await this.servicePartitionResolver.ResolveAsync(alphabetServiceUri, partitionKey, cancelRequest);
                 ResolvedServiceEndpoint ep = partition.GetEndpoint();
                 JObject addresses = JObject.Parse(ep.Address);
-                string primaryReplicaAddress = (string)addresses["Endpoints"].First();
+                primaryReplicaAddress = (string)addresses["Endpoints"].First();
                 UriBuilder primaryReplicaUriBuilder = new UriBuilder(primaryReplicaAddress);
                 primaryReplicaUriBuilder.Query = "lastname=" + lastname;
                 string result = await this.httpClient.GetStringAsync(primaryReplicaUriBuilder.Uri);

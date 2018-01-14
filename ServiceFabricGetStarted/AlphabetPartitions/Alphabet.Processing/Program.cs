@@ -25,6 +25,9 @@ namespace Alphabet.Processing
 
                 ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(Processing).Name);
 
+                //Thread.Sleep(100000);
+
+                //throw new Exception("Let's try to crash this");
                 // Prevents this host process from terminating so services keep running.
                 Thread.Sleep(Timeout.Infinite);
             }
