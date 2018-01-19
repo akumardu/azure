@@ -1,13 +1,29 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateDeviceIdentity", "CreateDeviceIdentity\CreateDeviceIdentity.csproj", "{F2D5BC75-E101-49F9-BBA1-9C40B99547A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadDeviceToCloudMessages", "ReadDeviceToCloudMessages\ReadDeviceToCloudMessages.csproj", "{88E11407-859E-4B42-8BE0-8A913DE460F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulatedDevice", "SimulatedDevice\SimulatedDevice.csproj", "{0E4F8355-BD7F-41D8-8D11-69EFB696D896}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadTestQueue", "ReadTestQueue\ReadTestQueue.csproj", "{325343E7-3C7B-4B7F-84C6-8B085A88A577}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendCloudToDevice", "SendCloudToDevice\SendCloudToDevice.csproj", "{B4320C0B-9984-4427-B0C5-46CACBDAFBEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadFileUploadNotifications", "ReadFileUploadNotifications\ReadFileUploadNotifications.csproj", "{B0B0C1E2-5D36-4044-96DB-44F5E961ABAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddTagsAndQuery", "AddTagsAndQuery\AddTagsAndQuery.csproj", "{AB3B717C-3044-458A-93FF-6DE854C90ADA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportConnectivity", "ReportConnectivity\ReportConnectivity.csproj", "{903EDE7B-ECE8-4B97-B0DC-897F84295BFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallMethodOnDevice", "CallMethodOnDevice\CallMethodOnDevice.csproj", "{986EED4A-9928-4A8A-8507-5CA24BD3EBD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulateDeviceConfiguration", "SimulateDeviceConfiguration\SimulateDeviceConfiguration.csproj", "{FD0792FC-B64E-429B-9B89-DCB01373229F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetDesiredConfigurationAndQuery", "SetDesiredConfigurationAndQuery\SetDesiredConfigurationAndQuery.csproj", "{A6741098-0F8F-499C-B546-36147E215300}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,11 +43,44 @@ Global
 		{0E4F8355-BD7F-41D8-8D11-69EFB696D896}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E4F8355-BD7F-41D8-8D11-69EFB696D896}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E4F8355-BD7F-41D8-8D11-69EFB696D896}.Release|Any CPU.Build.0 = Release|Any CPU
+		{325343E7-3C7B-4B7F-84C6-8B085A88A577}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{325343E7-3C7B-4B7F-84C6-8B085A88A577}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{325343E7-3C7B-4B7F-84C6-8B085A88A577}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{325343E7-3C7B-4B7F-84C6-8B085A88A577}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4320C0B-9984-4427-B0C5-46CACBDAFBEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4320C0B-9984-4427-B0C5-46CACBDAFBEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4320C0B-9984-4427-B0C5-46CACBDAFBEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4320C0B-9984-4427-B0C5-46CACBDAFBEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0B0C1E2-5D36-4044-96DB-44F5E961ABAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0B0C1E2-5D36-4044-96DB-44F5E961ABAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0B0C1E2-5D36-4044-96DB-44F5E961ABAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0B0C1E2-5D36-4044-96DB-44F5E961ABAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB3B717C-3044-458A-93FF-6DE854C90ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB3B717C-3044-458A-93FF-6DE854C90ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB3B717C-3044-458A-93FF-6DE854C90ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB3B717C-3044-458A-93FF-6DE854C90ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{903EDE7B-ECE8-4B97-B0DC-897F84295BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{903EDE7B-ECE8-4B97-B0DC-897F84295BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{903EDE7B-ECE8-4B97-B0DC-897F84295BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{903EDE7B-ECE8-4B97-B0DC-897F84295BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{986EED4A-9928-4A8A-8507-5CA24BD3EBD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{986EED4A-9928-4A8A-8507-5CA24BD3EBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{986EED4A-9928-4A8A-8507-5CA24BD3EBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{986EED4A-9928-4A8A-8507-5CA24BD3EBD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD0792FC-B64E-429B-9B89-DCB01373229F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD0792FC-B64E-429B-9B89-DCB01373229F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD0792FC-B64E-429B-9B89-DCB01373229F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD0792FC-B64E-429B-9B89-DCB01373229F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6741098-0F8F-499C-B546-36147E215300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6741098-0F8F-499C-B546-36147E215300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6741098-0F8F-499C-B546-36147E215300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6741098-0F8F-499C-B546-36147E215300}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
+		SolutionGuid = {687F2832-3BBC-4AA3-892A-491D944FE526}
 	EndGlobalSection
 EndGlobal
