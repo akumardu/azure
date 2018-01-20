@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureTest", "AzureTest.csproj", "{D250E0E7-0CDC-469A-B0C4-C7770E7D3DF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureManagerTest", "..\AzureVmManager\AzureManagerTest.csproj", "{C6050842-4AEE-4D74-997A-4504804BC60A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureManagerTest", "..\AzureManagerTest\AzureManagerTest.csproj", "{C6050842-4AEE-4D74-997A-4504804BC60A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31714751-E1FF-4A7A-A8A7-BD6C7743B0AF}
 	EndGlobalSection
 EndGlobal

@@ -1,7 +1,7 @@
 ﻿
 namespace AzureTest.EventHubTest
 {
-    using Microsoft.Azure.EventHubs;
+    using Microsoft.ServiceBus.Messaging;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.Collections.Generic;
@@ -13,22 +13,43 @@ namespace AzureTest.EventHubTest
     [TestClass]
     public class EventHubTest
     {
-        private const string ConnectionString = "";
-        private const string EventHubName = "";
+        private const string ConnectionString = "Endpoint=sb://testamareventhub.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=eRSbbGaZfW685cC4ovv/MV6BHFYkZY7SLRITctdwmmM=";
+        private const string EventHubName = "testhub";
+
+        private const string StorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=demostorewilliam;AccountKey=qU971XsnHHzCTKI58z00QHKPxL7/uf8F+LhWORZIKUcUTnYn7CKV4QdBrfVOzsSszbJPTIA+EzyVCA1iej8JSQ==;EndpointSuffix=core.windows.net";
 
         [TestMethod]
-        public async void BasicEventHubReadFromReceiverTest()
+        public async Task BasicEventHubReadFromReceiverTest()
         {
-            var connectionStringBuilder = new EventHubsConnectionStringBuilder(ConnectionString)
-            {
-                EntityPath = EventHubName
-            };
-            var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
+            var eventHubClient = EventHubClient.CreateFromConnectionString(ConnectionString, EventHubName);
 
             await SendMessagesToEventHub(eventHubClient, 100);
+       
             var count = await ReceiveMessage(eventHubClient);
 
             Assert.AreEqual(count, 100, $"{count} doesn't match");
+        }
+
+        [TestMethod]
+        public async Task BasicEventHubReadUsingProcessorTest()
+        {
+            var eventHubClient = EventHubClient.CreateFromConnectionString(ConnectionString, EventHubName);
+
+            string eventProcessorHostName = "Fixed-EventProcessorName";
+            EventProcessorHost eventProcessorHost = new EventProcessorHost(eventProcessorHostName, EventHubName, EventHubConsumerGroup.DefaultGroupName, ConnectionString, StorageConnectionString);
+            Console.WriteLine("Registering EventProcessor...");
+            var options = new EventProcessorOptions();
+            options.ExceptionReceived += (sender, e) => { Console.WriteLine(e.Exception); };
+            eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>(options).Wait();
+
+
+            await SendMessagesToEventHub(eventHubClient, 100);
+            await Task.Delay(50000);
+            
+            eventProcessorHost.UnregisterEventProcessorAsync().Wait();
+
+            int count = SimpleEventProcessor.messageReceived;
+            Assert.AreEqual(100, count, $"{count} doesn't match");
         }
 
         private static async Task<int> ReceiveMessage(EventHubClient eventHubClient)
@@ -47,17 +68,16 @@ namespace AzureTest.EventHubTest
 
         private static async Task<int> ReceiveMessageFromEventHub(EventHubClient eventHubClient, string partition)
         {
-            var eventHubReceiver = eventHubClient.CreateReceiver("$Default", partition, DateTime.UtcNow);
+            var eventHubReceiver = eventHubClient.GetDefaultConsumerGroup().CreateReceiver(partition, DateTime.UtcNow.AddMinutes(-2));
             int count = 0;
             for(int i = 0; i < 1000; i++)
             {
-                var eventData = await eventHubReceiver.ReceiveAsync(1);
+                var eventData = await eventHubReceiver.ReceiveAsync(1, TimeSpan.FromMilliseconds(100));
                 if (eventData == null) continue;
 
-                var data = Encoding.UTF8.GetString(eventData.First().Body.Array, eventData.First().Body.Offset, eventData.First().Body.Count);
+                var data = Encoding.UTF8.GetString(eventData.First().GetBytes());
                 Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data);
                 count++;
-                await Task.Delay(10);
             }
 
             return count;
