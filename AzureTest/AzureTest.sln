@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureTest", "AzureTest.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureManagerTest", "..\AzureManagerTest\AzureManagerTest.csproj", "{C6050842-4AEE-4D74-997A-4504804BC60A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmosDbTest", "CosmosDbTest\CosmosDbTest.csproj", "{4E356F4D-778D-4FF1-8B4E-CFB55B571FBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C6050842-4AEE-4D74-997A-4504804BC60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6050842-4AEE-4D74-997A-4504804BC60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6050842-4AEE-4D74-997A-4504804BC60A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E356F4D-778D-4FF1-8B4E-CFB55B571FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E356F4D-778D-4FF1-8B4E-CFB55B571FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E356F4D-778D-4FF1-8B4E-CFB55B571FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E356F4D-778D-4FF1-8B4E-CFB55B571FBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
