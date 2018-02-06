@@ -21,7 +21,7 @@ namespace CosmosDbTest
 
         
         [ClassInitialize]
-        public static async Task InitializeCosmosDb(TestContext testContext)
+        public static async void InitializeCosmosDb(TestContext testContext)
         {
             mongoClient = new MongoClient(MongoConnectionString);
             var database = mongoClient.GetDatabase(DbName);
@@ -30,7 +30,7 @@ namespace CosmosDbTest
         }
 
         [ClassCleanup]
-        public async Task CleanupCosmosDb()
+        public static async void CleanupCosmosDb()
         {
             var database = mongoClient.GetDatabase(DbName);
             await database.DropCollectionAsync(CollectionName);

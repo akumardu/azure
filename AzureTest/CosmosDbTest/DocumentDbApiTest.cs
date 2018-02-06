@@ -18,7 +18,7 @@ namespace CosmosDbTest
         private const string CollectionName = "coll";
 
         [ClassInitialize]
-        public static async Task InitializeCosmosDb(TestContext context)
+        public static async void InitializeCosmosDb(TestContext context)
         {
             documentDbClient = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
             await documentDbClient.CreateDatabaseAsync(new Database() { Id = DbName });
@@ -33,7 +33,7 @@ namespace CosmosDbTest
         }
 
         [ClassCleanup]
-        public async Task CleanupCosmosDb()
+        public static async void CleanupCosmosDb()
         {
             await documentDbClient.DeleteDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri(DbName, CollectionName));
 
