@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SimulatedDevice
@@ -10,30 +11,35 @@ namespace SimulatedDevice
     class Program
     {
         static DeviceClient deviceClient;
-        static string iotHubUri = "testamar.azure-devices.net";
-        static string deviceKey = "kN0U0PdAGcX+rdUJQUo9VTJPWfF/u6u298nfKjQTJcs=";
+        static string iotHubUri = "demobasichub.azure-devices.net";
+        static string deviceKey = "bShnwZR77QzL+YZmWWzQmdQVXRVzJSWnajib1clSzvI=";
+        private static string deviceId = "myFirstDevice";
+        static object _lock = new object();
 
         static void Main(string[] args)
         {
             Console.WriteLine("Simulated device\n");
-            deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("myFirstDevice", deviceKey), TransportType.Mqtt);
+            Thread.Sleep(15000);
+            deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey(deviceId, deviceKey), TransportType.Mqtt);
 
             deviceClient.ProductInfo = "HappyPath_Simulated-CSharp";
 
-            SendDeviceToCloudMessagesRoutingTutorialAsync();
             ReceiveC2dAsync();
+            Thread.Sleep(5000);
+            SendDeviceToCloudMessagesRoutingAsync();
+            
             //SendToBlobAsync();
 
             // setup callback for "writeLine" method
-            deviceClient.SetMethodHandlerAsync("writeLine", WriteLineToConsole, null).Wait();
-            Console.WriteLine("Waiting for direct method call\n Press enter to exit.");
+            //deviceClient.SetMethodHandlerAsync("writeLine", WriteLineToConsole, null).Wait();
+            //Console.WriteLine("Waiting for direct method call\n Press enter to exit.");
             Console.ReadLine();
 
             Console.WriteLine("Exiting...");
 
             // as a good practice, remove the "writeLine" handler
-            deviceClient.SetMethodHandlerAsync("writeLine", null, null).Wait();
-            Console.ReadLine();
+            //deviceClient.SetMethodHandlerAsync("writeLine", null, null).Wait();
+            //Console.ReadLine();
         }
 
         static Task<MethodResponse> WriteLineToConsole(MethodRequest methodRequest, object userContext)
@@ -63,21 +69,18 @@ namespace SimulatedDevice
 
         private static async void ReceiveC2dAsync()
         {
-            Console.WriteLine("\nReceiving cloud to device messages from service");
+            Print("\nSetup to receive cloud to device messages from service", ConsoleColor.Yellow);
             while (true)
             {
                 Message receivedMessage = await deviceClient.ReceiveAsync();
                 if (receivedMessage == null) continue;
 
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Received message: {0}", Encoding.ASCII.GetString(receivedMessage.GetBytes()));
-                Console.ResetColor();
-
+                Print($"Received message: {Encoding.ASCII.GetString(receivedMessage.GetBytes())}", ConsoleColor.Yellow);
                 await deviceClient.CompleteAsync(receivedMessage);
             }
         }
 
-        private static async void SendDeviceToCloudMessagesRoutingTutorialAsync()
+        private static async void SendDeviceToCloudMessagesRoutingAsync()
         {
             double minTemperature = 20;
             double minHumidity = 60;
@@ -119,9 +122,9 @@ namespace SimulatedDevice
                 message.Properties.Add("level", levelValue);
 
                 await deviceClient.SendEventAsync(message);
-                Console.WriteLine("{0} > Sent message: {1}", DateTime.Now, messageString);
+                Print($"{DateTime.Now} > Sending message: {messageString}", ConsoleColor.Blue);
 
-                await Task.Delay(1000);
+                await Task.Delay(2000);
             }
         }
 
@@ -149,9 +152,19 @@ namespace SimulatedDevice
                 message.Properties.Add("temperatureAlert", (currentTemperature > 30) ? "true" : "false");
 
                 await deviceClient.SendEventAsync(message);
-                Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
+                Print($"{DateTime.Now} > Sending message: {messageString}", ConsoleColor.Blue);
 
                 await Task.Delay(1000);
+            }
+        }
+
+        private static void Print(string message, ConsoleColor color)
+        {
+            lock (_lock)
+            {
+                Console.ForegroundColor = color;
+                Console.WriteLine(message);
+                Console.ResetColor();
             }
         }
     }

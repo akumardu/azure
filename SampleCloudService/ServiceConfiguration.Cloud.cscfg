@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="SampleCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="SampleWorkerRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=amarteststorageaccount;AccountKey=kLiVkwqx3d9jG3l7XCW5s3aEG6OnKow9G6kVVH38hm5V4wBzE8+ZzWoNzgAPMICXgOGPuiUuxIjj6shFv9BpPg==" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="amar" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEGUHqzBdjwWmStXmiQjw42QwDQYJKoZIhvcNAQEBBQAEggEAlmZbn7070sWJ3FCNl42GqvjMHqC2CMuK34erI7clKxO7NSaumfq/9NklUSv5vcY6Mw1g0dsvMv2n4zzGjiGV/eFPq0e4hlh0oC/+7JCvKMDhiFlUSrIg54iI4R+7xaBsr9CyRguB3M6BdZeZk/Y36NZWW9Csno/SenQC8JIfASCREe6nRXqeXHxIIJ6X/6lmY1+fzrLYYlPwPc7KWr1/fY1swZf3mvX7604CvL5FKU5BUWE8+7gPJt5+hMkdSsn6SVXQCjWdpNX7mEL9qMMqon71MqSnt8YSHsP6B5QA26dt7MSpJsZ6wxTrZ1LjJWhxA4Nr9KWM2gzjcvXG7o7SbjAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECGmhWibsdSmCgBC74eSe2uDoSfJviGwkFqW4" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2019-03-01T23:59:59.0000000-08:00" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="DBE4CF0C8CD6D516D86E9B4FE620A0C6570378CE" thumbprintAlgorithm="sha1" />
+    </Certificates>
+  </Role>
+</ServiceConfiguration>
