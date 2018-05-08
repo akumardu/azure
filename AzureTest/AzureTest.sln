@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureTest", "AzureTest.csproj", "{D250E0E7-0CDC-469A-B0C4-C7770E7D3DF2}"
 EndProject
@@ -12,6 +12,10 @@ EndProject
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "SampleCloudService", "..\SampleCloudService\SampleCloudService.ccproj", "{349F93C9-F9B0-408E-983A-22044998D948}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWorkerRole", "SampleWorkerRole\SampleWorkerRole.csproj", "{C248ED14-428B-4122-A7CA-BA3D5E3AB00B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelayListener", "..\ServiceBusTest\RelayTest\RelayListener\RelayListener.csproj", "{37F3D250-8E62-4A80-996A-FE757BE8A9DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelaySender", "..\ServiceBusTest\RelayTest\RelaySender\RelaySender.csproj", "{FAEE8243-80AA-4743-BE65-5B2E4AA4B298}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{C248ED14-428B-4122-A7CA-BA3D5E3AB00B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C248ED14-428B-4122-A7CA-BA3D5E3AB00B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C248ED14-428B-4122-A7CA-BA3D5E3AB00B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37F3D250-8E62-4A80-996A-FE757BE8A9DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37F3D250-8E62-4A80-996A-FE757BE8A9DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37F3D250-8E62-4A80-996A-FE757BE8A9DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F3D250-8E62-4A80-996A-FE757BE8A9DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAEE8243-80AA-4743-BE65-5B2E4AA4B298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAEE8243-80AA-4743-BE65-5B2E4AA4B298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAEE8243-80AA-4743-BE65-5B2E4AA4B298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAEE8243-80AA-4743-BE65-5B2E4AA4B298}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

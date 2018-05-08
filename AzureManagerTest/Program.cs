@@ -14,8 +14,8 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.Authentication;
-using Microsoft.WindowsAzure.Management.Compute;
-using Microsoft.WindowsAzure.Management.Compute.Models;
+//using Microsoft.WindowsAzure.Management.Compute;
+//using Microsoft.WindowsAzure.Management.Compute.Models;
 
 namespace AzureManagerTest
 {
