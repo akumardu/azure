@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelayListener", "..\Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelaySender", "..\ServiceBusTest\RelayTest\RelaySender\RelaySender.csproj", "{FAEE8243-80AA-4743-BE65-5B2E4AA4B298}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelayWcfService", "..\ServiceBusTest\RelayTest\RelayWcfService\RelayWcfService.csproj", "{4DDC9CCA-4443-42EC-810F-2C84E8BFCB0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelayWcfClient", "..\ServiceBusTest\RelayTest\RelayWcfClient\RelayWcfClient.csproj", "{C034D97B-78ED-4ACC-8BC3-C23B456DE7DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RelayTest", "RelayTest", "{F36611EE-7174-4242-8249-641F7C045C85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,9 +57,23 @@ Global
 		{FAEE8243-80AA-4743-BE65-5B2E4AA4B298}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAEE8243-80AA-4743-BE65-5B2E4AA4B298}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAEE8243-80AA-4743-BE65-5B2E4AA4B298}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DDC9CCA-4443-42EC-810F-2C84E8BFCB0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DDC9CCA-4443-42EC-810F-2C84E8BFCB0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DDC9CCA-4443-42EC-810F-2C84E8BFCB0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DDC9CCA-4443-42EC-810F-2C84E8BFCB0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C034D97B-78ED-4ACC-8BC3-C23B456DE7DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C034D97B-78ED-4ACC-8BC3-C23B456DE7DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C034D97B-78ED-4ACC-8BC3-C23B456DE7DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C034D97B-78ED-4ACC-8BC3-C23B456DE7DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{37F3D250-8E62-4A80-996A-FE757BE8A9DF} = {F36611EE-7174-4242-8249-641F7C045C85}
+		{FAEE8243-80AA-4743-BE65-5B2E4AA4B298} = {F36611EE-7174-4242-8249-641F7C045C85}
+		{4DDC9CCA-4443-42EC-810F-2C84E8BFCB0A} = {F36611EE-7174-4242-8249-641F7C045C85}
+		{C034D97B-78ED-4ACC-8BC3-C23B456DE7DC} = {F36611EE-7174-4242-8249-641F7C045C85}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {31714751-E1FF-4A7A-A8A7-BD6C7743B0AF}
