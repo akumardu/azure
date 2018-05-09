@@ -124,10 +124,13 @@
   <ItemGroup>
     <Compile Include="EventHubTest\EventHubTest.cs" />
     <Compile Include="EventHubTest\SimpleEventProcessor.cs" />
+    <Compile Include="ServiceBusTest\EventHubTest.cs" />
     <Compile Include="ServiceBusTest\IRelayService.cs" />
     <Compile Include="ServiceBusTest\RelayService.cs" />
     <Compile Include="ServiceBusTest\Relayutils.cs" />
     <Compile Include="ServiceBusTest\GraphApiTest.cs" />
+    <Compile Include="ServiceBusTest\ServiceBusQueueTest.cs" />
+    <Compile Include="ServiceBusTest\ServiceBusTopicTest.cs" />
     <Compile Include="Storage\Hotel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceBusTest\RelayTest.cs" />
