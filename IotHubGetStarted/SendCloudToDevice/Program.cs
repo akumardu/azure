@@ -12,15 +12,13 @@ namespace SendCloudToDevice
     class Program
     {
         static ServiceClient serviceClient;
-        static string connectionString = "HostName=demobasichub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=UY4B/i5RhGdRH1mEhMUdjIiGjYhxi69L+5jYmhQZiTs=";
-        private static string deviceId = "myFirstDevice";
         private static object _lock = new object();
 
         static void Main(string[] args)
         {
             Console.WriteLine("Send Cloud-to-Device message\n");
             Thread.Sleep(15000);
-            serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
+            serviceClient = ServiceClient.CreateFromConnectionString(Shared.Constants.IotHubConnectionString);
             ReceiveFeedbackAsync();
 
             //Console.WriteLine("Press any key to send a C2D message.");
@@ -39,7 +37,7 @@ namespace SendCloudToDevice
                 };
                 try
                 {
-                    await serviceClient.SendAsync(deviceId, commandMessage);
+                    await serviceClient.SendAsync(Shared.Constants.DeviceId1, commandMessage);
                     Print("Sending Cloud-to-Device message successfull", ConsoleColor.Yellow);
                 }
                 catch (Exception ex)

@@ -14,10 +14,9 @@ namespace ReadTestQueue
         static void Main(string[] args)
         {
             Console.WriteLine("Receive critical messages. Ctrl-C to exit.\n");
-            var connectionString = "Endpoint=sb://testamar.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=BPm20sdfTWEDJ9a93DdEQbwe60kRMGf+kHdUP9aWRuQ=";
             var queueName = "queue1";
 
-            var client = QueueClient.CreateFromConnectionString(connectionString, queueName);
+            var client = QueueClient.CreateFromConnectionString(Shared.Constants.IotHubConnectionString, queueName);
 
             client.OnMessage(message =>
             {

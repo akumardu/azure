@@ -13,11 +13,10 @@ namespace SetDesiredConfigurationAndQuery
     class Program
     {
         static RegistryManager registryManager;
-        static string connectionString = "HostName=testamar.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=Fcqxr60RiPqitTZH6dCThuB5yk8TFg5c2Kz3wTCUkDU=";
 
         static void Main(string[] args)
         {
-            registryManager = RegistryManager.CreateFromConnectionString(connectionString);
+            registryManager = RegistryManager.CreateFromConnectionString(Shared.Constants.IotHubConnectionString);
             SetDesiredConfigurationAndQuery();
             Console.WriteLine("Press any key to quit.");
             Console.ReadLine();
@@ -25,7 +24,7 @@ namespace SetDesiredConfigurationAndQuery
 
         static private async Task SetDesiredConfigurationAndQuery()
         {
-            var twin = await registryManager.GetTwinAsync("myDeviceId");
+            var twin = await registryManager.GetTwinAsync(Shared.Constants.DeviceId1);
             var patch = new
             {
                 properties = new
@@ -46,7 +45,7 @@ namespace SetDesiredConfigurationAndQuery
 
             while (true)
             {
-                var query = registryManager.CreateQuery("SELECT * FROM devices WHERE deviceId = 'myDeviceId'");
+                var query = registryManager.CreateQuery($"SELECT * FROM devices WHERE deviceId = '{Shared.Constants.DeviceId1}'");
                 var results = await query.GetNextAsTwinAsync();
                 foreach (var result in results)
                 {
