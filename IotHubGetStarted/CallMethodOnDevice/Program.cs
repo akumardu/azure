@@ -10,11 +10,10 @@ namespace CallMethodOnDevice
     class Program
     {
         static ServiceClient serviceClient;
-        static string connectionString = "HostName=testamar.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=Fcqxr60RiPqitTZH6dCThuB5yk8TFg5c2Kz3wTCUkDU=";
 
         static void Main(string[] args)
         {
-            serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
+            serviceClient = ServiceClient.CreateFromConnectionString(Shared.Constants.IotHubConnectionString);
             InvokeMethod().Wait();
             Console.WriteLine("Press Enter to exit.");
             Console.ReadLine();
@@ -25,7 +24,7 @@ namespace CallMethodOnDevice
             var methodInvocation = new CloudToDeviceMethod("writeLine") { ResponseTimeout = TimeSpan.FromSeconds(30) };
             methodInvocation.SetPayloadJson("'a line to be written'");
 
-            var response = await serviceClient.InvokeDeviceMethodAsync("myFirstDevice", methodInvocation);
+            var response = await serviceClient.InvokeDeviceMethodAsync(Shared.Constants.DeviceId1, methodInvocation);
 
             Console.WriteLine("Response status: {0}, payload:", response.Status);
             Console.WriteLine(response.GetPayloadAsJson());

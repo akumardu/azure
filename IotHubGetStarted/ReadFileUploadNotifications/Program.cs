@@ -10,12 +10,11 @@ namespace ReadFileUploadNotifications
     class Program
     {
         static ServiceClient serviceClient;
-        static string connectionString = "HostName=testamar.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=Fcqxr60RiPqitTZH6dCThuB5yk8TFg5c2Kz3wTCUkDU=";
 
         static void Main(string[] args)
         {
             Console.WriteLine("Receive file upload notifications\n");
-            serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
+            serviceClient = ServiceClient.CreateFromConnectionString(Shared.Constants.IotHubConnectionString);
             ReceiveFileUploadNotificationAsync();
             Console.WriteLine("Press Enter to exit\n");
             Console.ReadLine();

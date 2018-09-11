@@ -12,18 +12,17 @@ namespace CreateDeviceIdentity
     class Program
     {
         static RegistryManager registryManager;
-        static string connectionString = "HostName=testamar.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=Fcqxr60RiPqitTZH6dCThuB5yk8TFg5c2Kz3wTCUkDU=";
 
         static void Main(string[] args)
         {
-            registryManager = RegistryManager.CreateFromConnectionString(connectionString);
-            AddDeviceAsync().Wait();
+            registryManager = RegistryManager.CreateFromConnectionString(Shared.Constants.IotHubConnectionString);
+            AddDeviceAsync(Shared.Constants.DeviceId1).Wait();
+            AddDeviceAsync(Shared.Constants.DeviceId2).Wait();
             Console.ReadLine();
         }
 
-        private static async Task AddDeviceAsync()
+        private static async Task<string> AddDeviceAsync(string deviceId)
         {
-            string deviceId = "myFirstDevice";
             Device device;
             try
             {
@@ -33,7 +32,10 @@ namespace CreateDeviceIdentity
             {
                 device = await registryManager.GetDeviceAsync(deviceId);
             }
+
             Console.WriteLine("Generated device key: {0}", device.Authentication.SymmetricKey.PrimaryKey);
+
+            return device.Authentication.SymmetricKey.PrimaryKey;
         }
     }
 }

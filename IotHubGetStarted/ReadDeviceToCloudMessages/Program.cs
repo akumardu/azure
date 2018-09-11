@@ -10,7 +10,6 @@ namespace ReadDeviceToCloudMessages
 {
     class Program
     {
-        static string connectionString = "HostName=demobasichub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=UY4B/i5RhGdRH1mEhMUdjIiGjYhxi69L+5jYmhQZiTs=";
         static string iotHubD2cEndpoint = "messages/events";
         static EventHubClient eventHubClient;
 
@@ -18,7 +17,7 @@ namespace ReadDeviceToCloudMessages
         {
             Console.WriteLine("D2C Message receiver. Ctrl-C to exit.\n");
             Thread.Sleep(1000);
-            eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, iotHubD2cEndpoint);
+            eventHubClient = EventHubClient.CreateFromConnectionString(Shared.Constants.IotHubConnectionString, iotHubD2cEndpoint);
 
             var d2cPartitions = eventHubClient.GetRuntimeInformation().PartitionIds;
 

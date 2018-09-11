@@ -12,7 +12,6 @@ namespace ReportConnectivity
 {
     class Program
     {
-        static string DeviceConnectionString = "HostName=testamar.azure-devices.net;SharedAccessKeyName=iothubowner;DeviceId=myDeviceId;SharedAccessKey=Fcqxr60RiPqitTZH6dCThuB5yk8TFg5c2Kz3wTCUkDU=";
         static DeviceClient Client = null;
 
         static void Main(string[] args)
@@ -36,7 +35,7 @@ namespace ReportConnectivity
             try
             {
                 Console.WriteLine("Connecting to hub");
-                Client = DeviceClient.CreateFromConnectionString(DeviceConnectionString, TransportType.Mqtt);
+                Client = DeviceClient.CreateFromConnectionString(Shared.Constants.IotHubConnectionString, TransportType.Mqtt);
                 Console.WriteLine("Retrieving twin");
                 var twin = await Client.GetTwinAsync();
                 Console.WriteLine("Twin info: " + twin.ToJson());

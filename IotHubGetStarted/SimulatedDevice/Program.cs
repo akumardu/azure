@@ -11,16 +11,13 @@ namespace SimulatedDevice
     class Program
     {
         static DeviceClient deviceClient;
-        static string iotHubUri = "demobasichub.azure-devices.net";
-        static string deviceKey = "bShnwZR77QzL+YZmWWzQmdQVXRVzJSWnajib1clSzvI=";
-        private static string deviceId = "myFirstDevice";
         static object _lock = new object();
 
         static void Main(string[] args)
         {
             Console.WriteLine("Simulated device\n");
             Thread.Sleep(15000);
-            deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey(deviceId, deviceKey), TransportType.Mqtt);
+            deviceClient = DeviceClient.Create(Shared.Constants.IotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey(Shared.Constants.DeviceId1, Shared.Constants.DeviceId1Key), TransportType.Mqtt);
 
             deviceClient.ProductInfo = "HappyPath_Simulated-CSharp";
 
@@ -93,7 +90,7 @@ namespace SimulatedDevice
 
                 var telemetryDataPoint = new
                 {
-                    deviceId = "myFirstDevice",
+                    deviceId = Shared.Constants.DeviceId1,
                     temperature = currentTemperature,
                     humidity = currentHumidity
                 };
@@ -143,7 +140,7 @@ namespace SimulatedDevice
                 var telemetryDataPoint = new
                 {
                     messageId = messageId++,
-                    deviceId = "myFirstDevice",
+                    deviceId = Shared.Constants.DeviceId1,
                     temperature = currentTemperature,
                     humidity = currentHumidity
                 };

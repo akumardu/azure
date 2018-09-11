@@ -10,11 +10,10 @@ namespace AddTagsAndQuery
     class Program
     {
         static RegistryManager registryManager;
-        static string connectionString = "HostName=testamar.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=Fcqxr60RiPqitTZH6dCThuB5yk8TFg5c2Kz3wTCUkDU=";
 
         static void Main(string[] args)
         {
-            registryManager = RegistryManager.CreateFromConnectionString(connectionString);
+            registryManager = RegistryManager.CreateFromConnectionString(Shared.Constants.IotHubConnectionString);
             AddTagsAndQuery().Wait();
             Console.WriteLine("Press Enter to exit.");
             Console.ReadLine();
@@ -22,7 +21,7 @@ namespace AddTagsAndQuery
 
         public static async Task AddTagsAndQuery()
         {
-            var twin = await registryManager.GetTwinAsync("myDeviceId");
+            var twin = await registryManager.GetTwinAsync(Shared.Constants.DeviceId1);
             var patch =
                 @"{
              tags: {
